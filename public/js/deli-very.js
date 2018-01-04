@@ -31,8 +31,8 @@ var vm = new Vue({
     },
     addOrder: function (event) {
       socket.emit("addOrder", { orderId: this.getNext(), 
-                                details: { x: event.clientX-10, 
-                                           y: event.clientY-10 }
+                                details: { x: event.pageX-10, 
+                                           y: event.pageY-10 }
                               });
     }
   }
