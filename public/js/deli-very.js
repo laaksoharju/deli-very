@@ -22,17 +22,13 @@ var vm = new Vue({
       var lastOrder = Object.keys(this.orders).reduce( function (last, next) {
         return Math.max(last, next);
       }, 0);
-      // for (var (order, key) in vm.getOrders()) {
-      //   if (key > lastOrder) {
-      //     lastOrder = key;
-      //   }
-      // }
       return lastOrder + 1;
     },
     addOrder: function (event) {
       socket.emit("addOrder", { orderId: this.getNext(), 
                                 details: { x: event.pageX-10, 
-                                           y: event.pageY-10 }
+                                           y: event.pageY-10 },
+                                orderItems: ["Beans", "Curry"]
                               });
     }
   }

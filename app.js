@@ -26,6 +26,11 @@ app.get('/map', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/map.html'));
 });
 
+// Serve dispatcher.html as /map
+app.get('/dispatcher', function (req, res) {
+  res.sendFile(path.join(__dirname, 'views/dispatcher.html'));
+});
+
 // Store data in an object to keep the global namespace clean
 function Data() {
   this.orders = {};
