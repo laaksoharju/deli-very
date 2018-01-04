@@ -1,0 +1,21 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+#dots {
+	margin: 0;
+	padding: 0;
+	background: url(/img/polacks.jpg);
+	width:100vw;
+	height: 100vh;
+}
+
+#dots div {
+	position: absolute;
+	background: black;
+	color: white;
+	border-radius: 10px;
+	width:20px;
+	height:20px;
+	text-align: center;
+}
