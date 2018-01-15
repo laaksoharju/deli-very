@@ -3,12 +3,14 @@ body {
 	padding: 0;
 }
 #dots {
+	position: relative;
 	margin: 0;
 	padding: 0;
 	background: url(/img/polacks.jpg);
 	background-repeat: no-repeat;
 	width:1920px;
 	height: 1078px;
+	cursor: crosshair;
 }
 
 #dots div {
@@ -25,6 +27,7 @@ body {
 	top:1em;
 	left:1em;
 	position: absolute;
+	z-index: 2;
 	color:black;
 	background: rgba(255,255,255, 0.5);
 	padding: 1em;
