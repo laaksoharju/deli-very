@@ -25,24 +25,22 @@ app.get('/', function (req, res) {
 app.get('/map', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/map.html'));
 });
-
-// Serve dispatcher.html as /map
+// Serve dispatcher.html as /dispatcher
 app.get('/dispatcher', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/dispatcher.html'));
 });
 
-// Store data in an object to keep the global namespace clean
+// Store data in an object to keep the global namespace clean and 
+// prepare for multiple instances of data if necessary
 function Data() {
   this.orders = {};
 }
 
 /*
-  Adds an order to to the queue and makes an withdrawal from the
-  stock. If you have time, you should think a bit about whether
-  this is the right moment to do this.
+  Adds an order to to the queue
 */
 Data.prototype.addOrder = function (order) {
-  //Store the order in an object with orderId as key
+  //Store the order in an "associative array" with orderId as key
   this.orders[order.orderId] = order;
 };
 
@@ -53,10 +51,10 @@ Data.prototype.getAllOrders = function () {
 var data = new Data();
 
 io.on('connection', function (socket) {
-  // Send list of orders and text labels when a client connects
+  // Send list of orders when a client connects
   socket.emit('initialize', { orders: data.getAllOrders() });
 
-  // When someone orders something
+  // When a connected client emits an "addOrder" message
   socket.on('addOrder', function (order) {
     data.addOrder(order);
     // send updated info to all connected clients, note the use of io instead of socket

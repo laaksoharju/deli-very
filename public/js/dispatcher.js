@@ -1,5 +1,6 @@
 /*jslint es5:true, indent: 2 */
-/*global sharedVueStuff, Vue, socket */
+/*global Vue, io */
+/* exported vm */
 'use strict';
 var socket = io();
 
